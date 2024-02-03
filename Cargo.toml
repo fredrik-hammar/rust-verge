@@ -3,8 +3,6 @@ name = "verge"
 version = "0.1.0"
 edition = "2021"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [features]
 default = [
     "maybe_uninit_slice",
@@ -14,3 +12,7 @@ default = [
 maybe_uninit_slice = []
 maybe_uninit_uninit_array = []
 maybe_uninit_uninit_array_transpose = []
+
+[lints.clippy]
+pedantic = "deny"
+inline_always = "allow"  # used in core and std

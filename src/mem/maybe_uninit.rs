@@ -30,13 +30,14 @@ use std::mem::{transmute_copy, MaybeUninit};
 /// let data = read(&mut buf);
 /// ```
 #[cfg(feature = "maybe_uninit_uninit_array")]
+#[must_use]
 pub const fn uninit_array<const N: usize, T>() -> [MaybeUninit<T>; N] {
     // SAFETY: An uninitialized `[MaybeUninit<_>; LEN]` is valid.
     unsafe { MaybeUninit::<[MaybeUninit<T>; N]>::uninit().assume_init() }
 }
 
 /// Transposes a `MaybeUninit<[T; N]>` into a `[MaybeUninit<T>; N]`.
-/// Based on [std::mem::MaybeUninit::transpose].
+/// Based on [`std::mem::MaybeUninit::transpose`].
 ///
 /// # Examples
 ///
@@ -53,6 +54,7 @@ pub const fn uninit_array<const N: usize, T>() -> [MaybeUninit<T>; N] {
 /// Not const because the value may contain interior mutability see issue #80384 <https://github.com/rust-lang/rust/issues/80384> for more information.
 #[cfg(feature = "maybe_uninit_uninit_array_transpose")]
 #[inline]
+#[allow(clippy::needless_pass_by_value)]
 pub fn transpose<T, const N: usize>(value: MaybeUninit<[T; N]>) -> [MaybeUninit<T>; N] {
     // SAFETY: T and MaybeUninit<T> have the same layout
     unsafe { transmute_copy(&value) }
