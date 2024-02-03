@@ -13,6 +13,34 @@ maybe_uninit_slice = []
 maybe_uninit_uninit_array = []
 maybe_uninit_uninit_array_transpose = []
 
+# Explicitly list all lints we deny to avoid future lints to break the build.
+[lints.rust]
+bad_style = "deny"
+const_err = "deny"
+dead_code = "deny"
+improper_ctypes = "deny"
+non_shorthand_field_patterns = "deny"
+no_mangle_generic_items = "deny"
+overflowing_literals = "deny"
+path_statements = "deny"
+patterns_in_fns_without_body = "deny"
+private_in_public = "deny"
+unconditional_recursion = "deny"
+unused = "deny"
+unused_allocation = "deny"
+unused_comparisons = "deny"
+unused_parens = "deny"
+while_true = "deny"
+
+missing_debug_implementations = "deny"
+missing_docs = "warn"
+trivial_casts = "allow"  # used in core and std
+trivial_numeric_casts = "deny"
+unused_extern_crates = "deny"
+unused_import_braces = "deny"
+unused_qualifications = "deny"
+unused_results = "deny"
+
 [lints.clippy]
-pedantic = "deny"
+pedantic = "warn"
 inline_always = "allow"  # used in core and std
