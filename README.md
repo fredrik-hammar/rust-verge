@@ -4,3 +4,8 @@
 - [ ] maybe_uninit_slice
     - [x] slice_assume_init_ref
     - [ ] ...
+- [ ] Cargo keyword and categories to add and implement
+    - [x] rust
+    - [ ] no-std/no_std
+    - [ ] no-std::no-alloc
+    - [ ] allocation
